@@ -1,7 +1,6 @@
 function UnityProgress(unityInstance, progress) {
   if (!unityInstance.Module)
     return;
-    unityInstance.SetFullscreen(1);
   if (!unityInstance.logo) {
     unityInstance.logo = document.createElement("div");
     unityInstance.logo.className = "logo " + unityInstance.Module.splashScreenStyle;
@@ -21,5 +20,8 @@ function UnityProgress(unityInstance, progress) {
   unityInstance.progress.full.style.width = (100 * progress) + "%";
   unityInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
   if (progress == 1)
+  {
     unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
+    unityInstance.SetFullscreen(1);
+  }
 }
