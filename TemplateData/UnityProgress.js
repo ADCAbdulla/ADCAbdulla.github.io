@@ -1,6 +1,7 @@
 function UnityProgress(unityInstance, progress) {
   if (!unityInstance.Module)
     return;
+    unityInstance.SetFullscreen(1);
   if (!unityInstance.logo) {
     unityInstance.logo = document.createElement("div");
     unityInstance.logo.className = "logo " + unityInstance.Module.splashScreenStyle;
