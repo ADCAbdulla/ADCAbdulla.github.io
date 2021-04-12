@@ -9,7 +9,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Teks (04-09-21_1304).json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Teks (04-12-21_1134).json", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -21,5 +21,38 @@
         <div class="title">Teks 2</div>
       </div>
     </div>
+    <script>
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      function ExitGame()
+      {
+        sendMessageFromJS("Exit");
+      }
+      function isIOS() {
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      function isAndroid() {
+        return (/android/i.test(userAgent));
+      }
+      function sendMessageToUnity(message)
+      {
+        if(isIOS())
+          appendIframeWithURL('inappbrowserbridge://' + message);
+        else if(isAndroid())
+          UnityInAppBrowser.sendMessageFromJS(message);
+      }
+      function appendIframeWithURL(url)
+      {
+        var iframe = document.createElement("IFRAME");
+        iframe.setAttribute("src", url);
+        document.documentElement.appendChild(iframe);
+        iframe.parentNode.removeChild(iframe);
+        iframe = null;
+      }
+    </script>
   </body>
 </html>
