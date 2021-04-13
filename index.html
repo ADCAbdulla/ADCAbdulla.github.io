@@ -13,6 +13,11 @@
 
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
+      function changeHeight(height)
+      {
+        document.getElementById("div1").style.height = height + "px";
+      }
+
       function isIOS()
       {
         if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
@@ -47,6 +52,7 @@
       }
 
       function AudioControl(message) {
+        alert(message);
         unityInstance.SendMessage("AudioHandler","SendBackMessage",message);
       }
     </script>
