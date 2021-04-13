@@ -10,18 +10,7 @@
     <script src="Build/UnityLoader.js"></script>
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Teks (04-13-21_1351).json", {onProgress: UnityProgress});
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 450px; height: 800px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Teks 2</div>
-      </div>
-    </div>
-    <script>
+
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
       function isIOS()
@@ -61,5 +50,15 @@
         unityInstance.SendMessage("AudioHandler","SendBackMessage",message);
       }
     </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 450px; height: 800px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Teks 2</div>
+      </div>
+    </div>
   </body>
 </html>
