@@ -9,7 +9,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Teks (04-13-21_1258).json", {onProgress: UnityProgress});
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Teks (04-13-21_1351).json", {onProgress: UnityProgress});
     </script>
   </head>
   <body>
@@ -57,6 +57,9 @@
         sendMessageToUnity("Exit");
       }
 
+      function AudioControl(message) {
+        unityInstance.SendMessage("AudioHandler","SendBackMessage",message);
+      }
     </script>
   </body>
 </html>
