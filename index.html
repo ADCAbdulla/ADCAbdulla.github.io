@@ -67,7 +67,9 @@
     <script>
     function changeHeight(height)
       {
-        console.log(document.getElementById("unityContainer"));
+        var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
+        console.log(width);
         document.getElementById("unityContainer").style.height = 1200 + "px";
       }
 
