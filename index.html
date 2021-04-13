@@ -63,14 +63,14 @@
         var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
         if(width >= 1200)
         {
-          document.getElementById("content").style.height = 800 + "px";
-          document.getElementById("content").style.width = 450 + "px";
+          document.getElementById("webgl-content").style.height = 800 + "px";
+          document.getElementById("webgl-content").style.width = 450 + "px";
           return;
         }
 
         console.log(width);
-        document.getElementById("content").style.height = "100%";
-        document.getElementById("content").style.width = "100%";
+        document.getElementById("webgl-content").style.height = "100%";
+        document.getElementById("webgl-content").style.width = "100%";
       }
 
       changeDimension();
