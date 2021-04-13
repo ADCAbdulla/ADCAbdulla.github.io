@@ -13,11 +13,7 @@
 
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      function changeHeight(height)
-      {
-        console.log(document.getElementById("unityContainer"));
-        document.getElementById("unityContainer").style.height = 1200 + "px";
-      }
+      
 
       function isIOS()
       {
@@ -57,7 +53,6 @@
         unityInstance.SendMessage("AudioHandler","SendBackMessage",message);
       }
 
-      changeHeight();
     </script>
   </head>
   <body>
@@ -69,5 +64,14 @@
         <div class="title">Teks 2</div>
       </div>
     </div>
+    <script>
+    function changeHeight(height)
+      {
+        console.log(document.getElementById("unityContainer"));
+        document.getElementById("unityContainer").style.height = 1200 + "px";
+      }
+
+      changeHeight();
+    </script>
   </body>
 </html>
