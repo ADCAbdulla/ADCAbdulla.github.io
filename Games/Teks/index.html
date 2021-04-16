@@ -67,8 +67,12 @@
 		}
 
 		function sendMessageToUnity(message) {
-			if (isIOS()) {
-				appendIframeWithURL('inappbrowserbridge://' + message);
+			if (isIOS()){ 
+				try {
+					webkit.messageHandlers.UnityInAppBrowser.postMessage(message);
+				} catch(err) {
+					console.log("Can't reach native code");
+				}
 			} else if (isAndroid()){
 				UnityInAppBrowser.sendMessageFromJS(message);
 			}
