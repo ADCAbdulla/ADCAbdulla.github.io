@@ -7,7 +7,7 @@
 	<title>Holen</title>
 	<script src="Build/UnityLoader.js"></script>
 	<script>
-		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Holen (04-21-21_2341).json");
+		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Holen (04-14-21_1334).json");
 		var scaleToFit;
 		try {
 			scaleToFit = !!JSON.parse("true");
@@ -43,44 +43,45 @@
 		}
 		window.addEventListener('resize', onResize);
 
-        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+		var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-        function isIOS() {
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+		function isIOS()
+		{
+			if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+			return true;
+			} else {
+			return false;
+			}
+		}
 
-        function isAndroid() {
-            return (/android/i.test(userAgent));
-        }
+		function isAndroid() {
+			return (/android/i.test(userAgent));
+		}
 
-        function appendIframeWithURL(url) {
-            var iframe = document.createElement("IFRAME");
-            iframe.setAttribute("src", url);
-            document.documentElement.appendChild(iframe);
-            iframe.parentNode.removeChild(iframe);
-            iframe = null;
-        }
+		function appendIframeWithURL(url) {
+			var iframe = document.createElement("IFRAME");
+			iframe.setAttribute("src", url);
+			document.documentElement.appendChild(iframe);
+			iframe.parentNode.removeChild(iframe);
+			iframe = null;
+		}
 
-        function sendMessageToUnity(message) {
-            if (isIOS()) {
-                appendIframeWithURL('inappbrowserbridge://' + message);
-            } else if (isAndroid()) {
-                UnityInAppBrowser.sendMessageFromJS(message);
-            }
-        }
+		function sendMessageToUnity(message) {
+			if (isIOS()) {
+			appendIframeWithURL('inappbrowserbridge://' + message);
+			} else if (isAndroid()){
+			UnityInAppBrowser.sendMessageFromJS(message);
+			}
+		}
 
-        function ExitGame() {
-            sendMessageToUnity("Exit");
-        }
+		function ExitGame() {
+			sendMessageToUnity("Exit");
+		}
 
-        function AudioControl(message) {
-            alert(message);
-            unityInstance.SendMessage("AudioHandler", "SendBackMessage", message);
-        }
+		function AudioControl(message) {
+			alert(message);
+			unityInstance.SendMessage("AudioHandler","SendBackMessage",message);
+		}
 	</script>
 	<style>
 		html,
