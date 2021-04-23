@@ -7,7 +7,7 @@
 	<title>Tumbang Preso</title>
 	<script src="Build/UnityLoader.js"></script>
 	<script>
-		var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Tumbang Preso (04-13-21_2317).json");
+		var unityInstance = UnityLoader.instantiate("gameContainer", "Build/TumbangPreso.json");
 		var scaleToFit;
 		try {
 			scaleToFit = !!JSON.parse("true");
@@ -16,8 +16,8 @@
 		}
 
 		function onResize() {
-			var canvas = gameInstance.Module.canvas;
-			var container = gameInstance.container;
+            var canvas = unityInstance.Module.canvas;
+            var container = unityInstance.container;
 			var w;
 			var h;
 
@@ -42,22 +42,18 @@
 			container.style.left = Math.floor((window.innerWidth - w) / 2) + "px";
 		}
 		window.addEventListener('resize', onResize);
-
 		var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
 		function isIOS()
 		{
 			if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-			return true;
+				return true;
 			} else {
-			return false;
+				return false;
 			}
 		}
-
 		function isAndroid() {
 			return (/android/i.test(userAgent));
-		}
-
+		}	
 		function appendIframeWithURL(url) {
 			var iframe = document.createElement("IFRAME");
 			iframe.setAttribute("src", url);
@@ -65,22 +61,15 @@
 			iframe.parentNode.removeChild(iframe);
 			iframe = null;
 		}
-
 		function sendMessageToUnity(message) {
 			if (isIOS()) {
-			appendIframeWithURL('inappbrowserbridge://' + message);
+				appendIframeWithURL('inappbrowserbridge://' + message);
 			} else if (isAndroid()){
-			UnityInAppBrowser.sendMessageFromJS(message);
+				UnityInAppBrowser.sendMessageFromJS(message);
 			}
 		}
-
 		function ExitGame() {
 			sendMessageToUnity("Exit");
-		}
-
-		function AudioControl(message) {
-			alert(message);
-			unityInstance.SendMessage("AudioHandler","SendBackMessage",message);
 		}
 	</script>
 	<style>
