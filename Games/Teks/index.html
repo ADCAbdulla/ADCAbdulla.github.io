@@ -57,6 +57,7 @@
 			}).then(function (instance) {
 				var canvas = instance.Module.canvas;
 				var container = canvas.parentElement;
+				var isMobile = navigator.userAgent.toLowerCase().match(/mobile/i);
 				function onResize() {
 					var w;
 					var h;
@@ -65,7 +66,7 @@
 						w = window.innerWidth;
 						h = window.innerHeight;
 
-						var r = h / w;
+						var r = isMobile ? (h / w) : (850 / 450);
 
 						if (w * r > window.innerHeight) {
 							w = Math.min(w, Math.ceil(h / r));
