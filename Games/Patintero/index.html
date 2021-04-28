@@ -44,7 +44,6 @@
             }
 
             //UNITY LOADER ANG RESPONSIVENESS;
-            Resize();
             var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Patintero (04-28-21_1726).json", { onProgress: UnityProgress });
 
             var canvas = document.querySelector("#unityContainer");
@@ -60,6 +59,7 @@
                     canvas.style.height = "800px";
                 }
             }
+            Resize();
 
             function UnityProgress(unityInstance, progress) {
                 if (!unityInstance.Module)
