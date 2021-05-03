@@ -28,14 +28,18 @@
                 return (/android/i.test(userAgent));
             }
             function sendMessageToUnity(message) {
-                if (isIOS()) {
-                    try {
-                        webkit.messageHandlers.UnityInAppBrowser.postMessage(message);
-                    } catch (err) {
-                        console.log('Can not reach native code');
+                try {
+                    if (isIOS()) {
+                        try {
+                            webkit.messageHandlers.UnityInAppBrowser.postMessage(message);
+                        } catch (err) {
+                            console.log('Can not reach native code');
+                        }
+                    } else if (isAndroid()) {
+                        UnityInAppBrowser.sendMessageFromJS(message);
                     }
-                } else if (isAndroid()) {
-                    UnityInAppBrowser.sendMessageFromJS(message);
+                } catch (err) {
+                    alert("Error in SendMessage | Error: " + err.message);
                 }
             }
             function ExitGame() {
@@ -49,41 +53,49 @@
             var content = document.querySelector("#webgl-content");
 
             function Resize() {
-                if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                    content.className = "unity-mobile";
-                    canvas.style.width = "100%";
-                    canvas.style.height = "100%";
-                } else {
-                    canvas.style.width = "450px";
-                    canvas.style.height = "800px";
+                try {
+                    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                        content.className = "unity-mobile";
+                        canvas.style.width = "100%";
+                        canvas.style.height = "100%";
+                    } else {
+                        canvas.style.width = "450px";
+                        canvas.style.height = "800px";
+                    }
+                } catch (err) {
+                    alert("Error in Responsiveness | Error: "+err.message);
                 }
             }
             Resize();
 
             function UnityProgress(unityInstance, progress) {
-                if (!unityInstance.Module)
-                    return;
-                if (!unityInstance.logo) {
-                    unityInstance.logo = document.createElement("div");
-                    unityInstance.logo.className = "logo " + unityInstance.Module.splashScreenStyle;
-                    unityInstance.container.appendChild(unityInstance.logo);
-                }
-                if (!unityInstance.progress) {
-                    unityInstance.progress = document.createElement("div");
-                    unityInstance.progress.className = "progress " + unityInstance.Module.splashScreenStyle;
-                    unityInstance.progress.empty = document.createElement("div");
-                    unityInstance.progress.empty.className = "empty";
-                    unityInstance.progress.appendChild(unityInstance.progress.empty);
-                    unityInstance.progress.full = document.createElement("div");
-                    unityInstance.progress.full.className = "full";
-                    unityInstance.progress.appendChild(unityInstance.progress.full);
-                    unityInstance.container.appendChild(unityInstance.progress);
-                }
-                unityInstance.progress.full.style.width = (100 * progress) + "%";
-                unityInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
-                if (progress == 1) {
-                    unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
-                    Resize();
+                try {
+                    if (!unityInstance.Module)
+                        return;
+                    if (!unityInstance.logo) {
+                        unityInstance.logo = document.createElement("div");
+                        unityInstance.logo.className = "logo " + unityInstance.Module.splashScreenStyle;
+                        unityInstance.container.appendChild(unityInstance.logo);
+                    }
+                    if (!unityInstance.progress) {
+                        unityInstance.progress = document.createElement("div");
+                        unityInstance.progress.className = "progress " + unityInstance.Module.splashScreenStyle;
+                        unityInstance.progress.empty = document.createElement("div");
+                        unityInstance.progress.empty.className = "empty";
+                        unityInstance.progress.appendChild(unityInstance.progress.empty);
+                        unityInstance.progress.full = document.createElement("div");
+                        unityInstance.progress.full.className = "full";
+                        unityInstance.progress.appendChild(unityInstance.progress.full);
+                        unityInstance.container.appendChild(unityInstance.progress);
+                    }
+                    unityInstance.progress.full.style.width = (100 * progress) + "%";
+                    unityInstance.progress.empty.style.width = (100 * (1 - progress)) + "%";
+                    if (progress == 1) {
+                        unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
+                        Resize();
+                    }
+                } catch (err) {
+                    alert("Error in loader | Error: " +err.message);
                 }
             }
         </script>
