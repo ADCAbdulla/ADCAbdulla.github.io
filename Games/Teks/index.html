@@ -15,36 +15,12 @@
     <div id="webgl-content" class="unity-desktop">
       <div id="unityContainer" style="width: 450px; height: 800px"></div>
         <script>
-
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            function isIOS() {
-                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            function isAndroid() {
-                return (/android/i.test(userAgent));
-            }
-            function sendMessageToUnity(message) {
-                try {
-                    if (isIOS()) {
-                        try {
-                            webkit.messageHandlers.UnityInAppBrowser.postMessage(message);
-                        } catch (err) {
-                            console.log('Can not reach native code');
-                        }
-                    } else if (isAndroid()) {
-                        UnityInAppBrowser.sendMessageFromJS(message);
-                    }
-                } catch (err) {
-                    alert("Error in SendMessage | Error: " + err.message);
-                }
-            }
             function ExitGame() {
-                sendMessageToUnity("Exit");
-                //window.location.href = "uniwebview://Exit";
+                //sendMessageToUnity("Exit");
+                window.location.href = "ayos://Exit";
+            }
+            function PlayBGM() {
+                window.location.href = "ayos://PlayBGM"
             }
 
             //UNITY LOADER AND RESPONSIVENESS
@@ -94,6 +70,7 @@
                     if (progress == 1) {
                         unityInstance.logo.style.display = unityInstance.progress.style.display = "none";
                         Resize();
+                        PlayBGM();
                     }
                 } catch (err) {
                     alert("Error in loader | Error: " +err.message);
