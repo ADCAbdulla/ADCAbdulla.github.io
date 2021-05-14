@@ -41,6 +41,18 @@
             function ExitGame() {
                 sendMessageToUnity("Exit");
             }
+            function PlayBGM() {
+                //window.location.href = "ayos://PlayBGM"
+                sendMessageToUnity("PlayBGM");
+            }
+            function EnableBGM() {
+                //window.location.href = "ayos://ToggleBGM?status=On";
+                sendMessageToUnity("ToggleBGMOn");
+            }
+            function DisableBGM() {
+                //window.location.href = "ayos://ToggleBGM?status=Off";
+                sendMessageToUnity("ToggleBGMOff");
+            }
 
             //MAIN UNITY LOADER
             var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Holen_WebGL_04282021.json", { onProgress: UnityProgress });

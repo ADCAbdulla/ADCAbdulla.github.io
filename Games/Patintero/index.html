@@ -44,12 +44,15 @@
             }
             function PlayBGM() {
                 //window.location.href = "ayos://PlayBGM"
+                sendMessageToUnity("PlayBGM");
             }
             function EnableBGM() {
                 //window.location.href = "ayos://ToggleBGM?status=On";
+                sendMessageToUnity("ToggleBGMOn");
             }
             function DisableBGM() {
                 //window.location.href = "ayos://ToggleBGM?status=Off";
+                sendMessageToUnity("ToggleBGMOff");
             }
 
             //UNITY LOADER AND RESPONSIVENESS
