@@ -1,0 +1,16 @@
+{
+"companyName": "Multisys Technologies Corporation",
+"productName": "Holen",
+"productVersion": "0.1",
+"dataUrl": "Build (06-08-2021_1946).data.unityweb",
+"wasmCodeUrl": "Build (06-08-2021_1946).wasm.code.unityweb",
+"wasmFrameworkUrl": "Build (06-08-2021_1946).wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.18f1"
+}
