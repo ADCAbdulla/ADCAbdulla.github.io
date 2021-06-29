@@ -10,6 +10,7 @@
     <script src="Build/UnityLoader.js"></script>
   </head>
   <body>
+    <div id="custom-logo" hidden></div>
     <div id="webgl-content" class="unity-desktop">
       <div id="unityContainer" style="width: 450px; height: 800px"></div>
         <script>
@@ -94,8 +95,8 @@
                 if (!unityInstance.Module)
                     return;
                 if (!unityInstance.logo) {
-                    unityInstance.logo = document.createElement("div");
-                    unityInstance.logo.className = "logo " + unityInstance.Module.splashScreenStyle;
+                    unityInstance.logo = document.getElementById("custom-logo");
+                    unityInstance.logo.style.display = "block";
                     unityInstance.container.appendChild(unityInstance.logo);
                 }
                 if (!unityInstance.progress) {
