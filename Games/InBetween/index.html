@@ -40,17 +40,22 @@
             var content = document.querySelector("#webgl-content");
             var backBtn = document.querySelector("#back-button");
             function Resize() {
-                try {
-                    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                        content.className = "unity-mobile";
-                        canvas.style.width = "100%";
-                        canvas.style.height = "100%";
-                    } else {
-                        canvas.style.width = "450px";
-                        canvas.style.height = "800px";
-                    }
-                } catch (err) {
-                    alert("Error in Responsiveness | Error: " + err.message);
+                if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                    content.className = "unity-mobile";
+                    canvas.style.width = "100%";
+                    canvas.style.height = "100%";
+                } else {
+                    canvas.style.width = "450px";
+                    canvas.style.height = "800px";
+                }
+
+                if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                    backBtn.style.width = "250px";
+                    backBtn.style.height = "250px";
+                }
+                else {
+                    backBtn.style.height = "100px";
+                    backBtn.style.height = "100px";
                 }
             }
             Resize();
