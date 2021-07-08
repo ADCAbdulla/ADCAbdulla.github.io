@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="TemplateData/style.css">
 </head>
 <body>
+    <div id="back-button" onclick="Back()"></div>
     <div id="webgl-content" class="unity-desktop">
-        <div id="back-button" onclick="Back()"></div>
         <div id="unityContainer" style="width: 450px; height: 800px;">
         </div>
         <script>
@@ -45,13 +45,9 @@
                         content.className = "unity-mobile";
                         canvas.style.width = "100%";
                         canvas.style.height = "100%";
-                        backBtn.style.width = "80px";
-                        backBtn.style.height = "80px";
                     } else {
                         canvas.style.width = "450px";
                         canvas.style.height = "800px";
-                        backBtn.style.width = "80px";
-                        backBtn.style.height = "80px";
                     }
                 } catch (err) {
                     alert("Error in Responsiveness | Error: " + err.message);

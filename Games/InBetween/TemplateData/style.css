@@ -1,4 +1,4 @@
-body { padding: 0; margin: 0; background-color:black}
+body { padding: 0; margin: 0; background-color: black}
 #webgl-content {position: absolute; background: #000000 }
 #webgl-content.unity-desktop { left: 50%; top: 50%; transform: translate(-50%, -50%) }
 #webgl-content.unity-mobile { width: 100%; height: 100% }
@@ -15,7 +15,8 @@ body { padding: 0; margin: 0; background-color:black}
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    display: block;
-    width: 80px;
-    height: 80px;
+
+    width: 100px;
+    height: 100px;
+    z-index: 1;
 }
