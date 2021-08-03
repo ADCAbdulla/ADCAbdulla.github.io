@@ -1,0 +1,16 @@
+{
+"companyName": "Multisys Technologies Corporation",
+"productName": "Ayos_Patintero",
+"productVersion": "0.1",
+"dataUrl": "Patintero (08-03-21_1826).data.unityweb",
+"wasmCodeUrl": "Patintero (08-03-21_1826).wasm.code.unityweb",
+"wasmFrameworkUrl": "Patintero (08-03-21_1826).wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.18f1"
+}
